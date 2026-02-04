@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ópticas San Agustín | Calidad Visual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    <header class="wp-navbar d-flex justify-content-between align-items-center">
+        <nav class="d-none d-md-flex">
+            <a href="#" class="nav-link-wp">Lentes</a>
+            <a href="#" class="nav-link-wp">Marcas</a>
+            <a href="#" class="nav-link-wp">Ofertas</a>
+        </nav>
+
+        <div class="text-center">
+            <a href="{% url 'index' %}" class="brand-wp">San Agustín</a>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <a href="#" class="utility-link d-none d-md-flex">
+                <span class="material-icons utility-icon">location_on</span> Sedes
+            </a>
+            <a href="#" class="utility-link">
+                <span class="material-icons utility-icon">person</span> Ingresar
+            </a>
+            <a href="#" class="btn btn-dark btn-sm ms-4 rounded-pill px-3 d-none d-lg-inline-block">Agendar Cita</a>
+        </div>
+    </header>
+
+    <section class="hero-container">
+        <img src="https://images.unsplash.com/photo-1570222094114-28a9d88a27e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="hero-img">
+        
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Tu visión merece lo mejor.</h1>
+                    <p class="lead mb-4 text-dark">Descubre la nueva colección 2026 con tecnología Blue Light y diseños exclusivos.</p>
+                    <a href="#" class="btn-premium">Ver Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--primary-dark);">Su camino empieza aquí</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card-pilar">
+                        <p class="pilar-subtitle">Examen</p>
+                        <h3 class="pilar-title">Salud Visual</h3>
+                        <span class="material-icons fs-1 text-primary mt-3">visibility</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-pilar">
+                        <p class="pilar-subtitle">Estilo</p>
+                        <h3 class="pilar-title">Monturas</h3>
+                        <span class="material-icons fs-1 text-primary mt-3">face</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-pilar">
+                        <p class="pilar-subtitle">Atención</p>
+                        <h3 class="pilar-title">Nuestras Sedes</h3>
+                        <span class="material-icons fs-1 text-primary mt-3">storefront</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -118,3 +118,28 @@ body {
     font-weight: 700;
     color: var(--primary-dark);
 }
+
+/* --- ESTILOS NUEVOS PARA LA SECCIÓN DE LUNAS --- */
+.ls-2 {
+    letter-spacing: 2px; /* Espaciado elegante entre letras */
+}
+
+.hover-up {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-up:hover {
+    transform: translateY(-10px); /* Se mueve hacia arriba */
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.15)!important; /* Sombra suave */
+}
+
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5em 1em;
+}
+
+/* Ajuste para iconos de Google */
+.material-icons {
+    vertical-align: middle;
+}

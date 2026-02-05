@@ -121,3 +121,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+# Configuración para archivos subidos por el usuario (Fotos de lentes)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

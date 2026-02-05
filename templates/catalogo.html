@@ -1,0 +1,66 @@
+{% extends "base_accounts.html" %} {% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-3 pe-lg-5 mb-4">
+            <h4 class="fw-bold mb-4">Filtros</h4>
+            <form method="get">
+                
+                <div class="mb-4">
+                    <h6 class="fw-bold text-uppercase small text-muted">Material</h6>
+                    {% for valor, nombre in materiales %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="material" value="{{ valor }}" id="mat_{{ valor }}" onchange="this.form.submit()" {% if request.GET.material == valor %}checked{% endif %}>
+                        <label class="form-check-label" for="mat_{{ valor }}">{{ nombre }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="mb-4">
+                    <h6 class="fw-bold text-uppercase small text-muted">Color</h6>
+                    {% for valor, nombre in colores %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="color" value="{{ valor }}" id="col_{{ valor }}" onchange="this.form.submit()" {% if request.GET.color == valor %}checked{% endif %}>
+                        <label class="form-check-label" for="col_{{ valor }}">{{ nombre }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <a href="{% url 'catalogo' %}" class="btn btn-outline-dark btn-sm w-100">Limpiar Filtros</a>
+            </form>
+        </div>
+
+        <div class="col-lg-9">
+            <h2 class="mb-4 fw-bold">Monturas Ópticas</h2>
+            <div class="row g-4">
+                {% for p in productos %}
+                <div class="col-md-4">
+                    <div class="card border-0 h-100">
+                        <div class="position-relative bg-light rounded-3 p-4 text-center mb-3" style="height: 250px;">
+                            {% if p.imagen %}
+                                <img src="{{ p.imagen.url }}" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                            {% else %}
+                                <div class="text-muted mt-5">Sin foto</div>
+                            {% endif %}
+                        </div>
+                        <div class="card-body px-0 pt-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="fw-bold mb-0 text-dark">{{ p.nombre }}</h5>
+                                <span class="fw-bold text-primary">S/ {{ p.precio }}</span>
+                            </div>
+                            <p class="text-muted small mb-2">{{ p.marca }}</p>
+                            <a href="{% url 'detalle_producto' p.id %}" class="btn btn-outline-dark w-100 rounded-pill">Ver detalles</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">No encontramos lentes con esos filtros.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

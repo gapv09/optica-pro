@@ -16,11 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from catalogo import views
+# --- NUEVOS IMPORTS PARA FOTOS ---
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('sedes/', views.sedes, name='sedes'),
+    path('lentes/', views.catalogo, name='catalogo'),
+    path('lentes/<int:producto_id>/', views.detalle_producto, name='detalle_producto'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('setup-secreto/', views.setup_datos, name='setup_datos'),
 ]
+
+# --- ESTO PERMITE VER LAS FOTOS MIENTRAS DESARROLLAS ---
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

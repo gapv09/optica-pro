@@ -1,24 +1,42 @@
+# catalogo/models.py
 from django.db import models
 
-# 1. Modelo de Categoría
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=50) # Ej: "Sol", "Medida", "Niños"
-    
-    def __str__(self):
-        return self.nombre
+    nombre = models.CharField(max_length=50)
+    def __str__(self): return self.nombre
 
-# 2. Modelo de Producto
 class Producto(models.Model):
-    nombre = models.CharField(max_length=200) # Ej: Ray-Ban Aviator Classic
+    # Opciones para listas desplegables (Tuplas: Valor BD, Valor Legible)
+    MATERIALES = [
+        ('acetato', 'Acetato'),
+        ('metal', 'Metal'),
+        ('titanio', 'Titanio'),
+        ('mixto', 'Mixto (Acetato/Metal)'),
+    ]
+    
+    COLORES = [
+        ('negro', 'Negro'),
+        ('havana', 'Havana (Carey)'),
+        ('transparente', 'Transparente'),
+        ('dorado', 'Dorado'),
+        ('plateado', 'Plateado'),
+        ('azul', 'Azul'),
+    ]
+
+    nombre = models.CharField(max_length=200)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    marca = models.CharField(max_length=100, default="San Agustín") # Nuevo
+    material = models.CharField(max_length=50, choices=MATERIALES, default='acetato') # Nuevo
+    color = models.CharField(max_length=50, choices=COLORES, default='negro') # Nuevo
     descripcion = models.TextField()
-    precio = models.DecimalField(max_digits=10, decimal_places=2) # 350.00
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField(default=10)
     imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
     activo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nombre
+
 
 # 3. Modelo de Sede (El nuevo)
 class Sede(models.Model):

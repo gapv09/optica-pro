@@ -1,0 +1,65 @@
+{% extends "base_accounts.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row align-items-center">
+        
+        <div class="col-md-7 mb-4 mb-md-0">
+            <div class="bg-light rounded-4 p-5 text-center position-relative" style="min-height: 500px; display: flex; align-items: center; justify-content: center;">
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" class="img-fluid shadow-sm rounded" style="max-width: 90%;">
+                {% else %}
+                    <span class="text-muted">Imagen no disponible</span>
+                {% endif %}
+                
+                <button class="btn btn-dark position-absolute bottom-0 start-50 translate-middle-x mb-4 rounded-pill px-4">
+                    <span class="material-icons align-middle fs-5 me-1">videocam</span> Pruébalo virtualmente
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-5 ps-md-5">
+            <h1 class="display-4 fw-bold mb-2" style="font-family: 'Times New Roman', serif;">{{ producto.nombre }}</h1>
+            
+            <div class="d-flex align-items-center mb-4">
+                <h3 class="text-primary fw-bold mb-0 me-3">S/ {{ producto.precio }}</h3>
+                <div class="text-warning">
+                    <span class="material-icons fs-5">star</span>
+                    <span class="material-icons fs-5">star</span>
+                    <span class="material-icons fs-5">star</span>
+                    <span class="material-icons fs-5">star</span>
+                    <span class="material-icons fs-5">star_half</span>
+                    <span class="text-muted small ms-1 text-dark">(4.8)</span>
+                </div>
+            </div>
+
+            <p class="text-muted lead mb-4">{{ producto.descripcion }}</p>
+
+            <div class="row mb-4 small text-muted">
+                <div class="col-6">
+                    <strong>Marca:</strong> {{ producto.marca }}
+                </div>
+                <div class="col-6">
+                    <strong>Material:</strong> {{ producto.get_material_display }}
+                </div>
+                <div class="col-6">
+                    <strong>Color:</strong> {{ producto.get_color_display }}
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg py-3 rounded-pill fw-bold" style="background-color: var(--primary-dark);">
+                    SELECCIONA LENTES Y COMPRA
+                </button>
+                <div class="text-center mt-3">
+                    <span class="text-muted small"><span class="material-icons align-middle fs-6">local_shipping</span> Envío gratis a todo Lima</span>
+                    <span class="text-muted small ms-3"><span class="material-icons align-middle fs-6">replay</span> Devoluciones gratis</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
